@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <title></title>
+</head>
+
+<body>
+  <div id="dateSlot"></div>
+  <button id="dateBtn">Click for Date</button>
+  <!-- <button onclick="renderDate()">Click for Date</button> -->
+</body>
+
+<script>
+  const dateElement = document.getElementById('dateSlot');
+  const dateBtn = document.getElementById('dateBtn');
+  // renderDate = () => {
+  //   dateElement.innerHTML = Date();
+  // }
+  dateBtn.addEventListener('click', (event) => {
+    dateElement.innerHTML = Date();
+  });
+</script>
+</html>

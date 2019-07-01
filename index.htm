@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Lodash Demo</title>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.4/lodash.min.js"></script>
+  </head>
+  <body>
+     <a href="https://google.com">https://google.com</a>
+  </body>
+
+  <script>
+     const links = [
+      "https://google.com",
+      "https://devcamp.com",
+      "https://airbnb.com"
+    ];
+
+    const webLinks = _.reduce(links, function(content, link) {
+      debugger;
+      return `<a href='${link}'>${link}</a><br>`.concat(content);
+    }, '');
+
+  </script>
+</html>

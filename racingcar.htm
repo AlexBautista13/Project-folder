@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <title>car racing game</title>
+
+    <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css'>
+    <style type= "text/css">
+      body{
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        background:rgba(0, 0, 255,.4);
+        font-family: 'Josefin Sans', sans-serif;
+        background-position: center;
+      }
+
+      #score-div{
+        position:absolute;
+        margin-top:20%;
+        margin-left: 10%;
+        font-size: 25px;
+        background: white;
+        color: #454545;
+        padding: 15px;
+        -webkit-box-shadow: 4px 4px 4px 1px #808080;
+        box-shadow: 4px 4px 4px 1px #808080;
+      }
+      #score-div p{
+        height: 20px;
+      }
+
+      #container{
+        width: 40%;
+        height: 100vh;
+        Left: 35%;
+        background: #333;
+        overflow: hidden;
+        position: relative;
+      }
+      .line{
+        width: 4%;
+        height: 30vh;
+        background: rgba(225, 225, 255,.8);
+        position: absolute;
+        margin-left: 48%;
+      }
+
+      #line-1{
+        top: -150px;
+      }
+      #line-2{
+        top: 150px;
+      }
+      #line-3{
+        top: 450px;
+      }
+
+      .car {
+        position: absolute;
+        widows: 40px;
+        height: 60px;
+        border-radius: 5px;
+        -webkit-box-shadow: 3px 3px 3px blink;
+        box-shadow: 3px 3px 3px blink;
+      }
+      #car{
+        bottom: 10px;
+        left: 60%;
+        background: red;
+      }
+      .f-glass,
+      .b-glass{
+        width: 60%;
+        height: 20%;
+        background: #484848;
+        position: absolute;
+        margin-left: 20%;
+      }
+      .f-glass{
+        top: 15px;
+        border-radius: 5px 5px 0 0;
+      }
+      .b-glass{
+        bottom: 15px;
+        border-radius: 0 0 5px 5px;
+      }
+      .f-light-l,
+      .b-light-r{
+        position: absolute;
+        width: 20%;
+        height: 10%;
+        background: #efefef;
+        top: -6%;
+        margin-left: 10%;
+        border-radius: 5px 5px 0 0;
+
+      }
+      .f-light-r{
+        margin-left:70%;
+      }
+      .f-tyre-l,
+      .f-tyre-r,
+      .b-tyre-l,
+      .b-tyre-r{
+        position: absolute;
+        height: 20%;
+        widows: 10%;
+        background: grey;
+      }
+      .f-tyre-l{
+        top:20%;
+        left:-10%;
+        border-radius: 5px 5px 0 0;
+      }
+      
+      .f-tyre-r{
+        top: 20%;
+        left: 100%;
+        border-radius: 0 5px 5px 0;
+      }
+
+      .b-tyre-r{
+        top: 20%;
+        left: -10%;
+        border-radius: 5px 5px 0 0;
+      }
+
+      .b-tyre-r{
+        top: 20%;
+        left: 100%;
+        border-radius: 0 5px 5px 0;
+      }
+      #car-1{
+        top:-100%;
+        left: 60%;
+        background: green;
+      }
+      #car-2{
+        top:-200%;
+        left: 40%;
+        background:red;
+      }
+      #car-3{
+        top:-350%;
+        left: 45%;
+        background: #26c5ff;
+      }
+      #restart-div{
+        position: absolute;
+        top: 0%;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: #292929;
+        line-height: 100vh;
+        display: none;
+      }
+      #restart{
+        display: block;
+        width: 50%;
+        height: 80px;
+        background: #8a64ff;
+        color: #fff;
+        font-size: 25px;
+        border:none;
+        outline:none;
+        margin-left:20%;
+        margin-top:50%;
+      }     
+    </style>
+</head>
+<body>
+   
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+  <div id="score-div">
+    <span>score :</span>
+    <span id="score">0</span>
+  </div>
+
+ <div id="container">
+
+  <div class="line" id="line-1"></div>
+  <div class="line" id="line-2"></div>
+  <div class="line" id="line-3"></div>
+
+  <div class="car" id="car">
+    <div class="f-glass"></div>
+    <div class="f-light-l"></div>
+    <div class="f-light-r"></div>
+    <div class="f-tyre-l"></div>
+    <div class="f-tyre-r"></div>
+    <div class="b-tyre-l"></div>
+    <div class="b-tyre-r"></div>
+    <div class="b-glass-"></div>
+  </div>
+
+  <div class="car" id="car-1">
+    <div class="f-glass"></div>
+    <div class="f-light-l"></div>
+    <div class="f-light-r"></div>
+    <div class="f-tyre-l"></div>
+    <div class="f-tyre-r"></div>
+    <div class="b-tyre-l"></div>
+    <div class="b-tyre-r"></div>
+    <div class="b-glass-"></div>
+  </div>
+
+  <div class="car" id="car-2">
+    <div class="f-glass"></div>
+    <div class="f-light-l"></div>
+    <div class="f-light-r"></div>
+    <div class="f-tyre-l"></div>
+    <div class="f-tyre-r"></div>
+    <div class="b-tyre-l"></div>
+    <div class="b-tyre-r"></div>
+    <div class="b-glass-"></div>
+  </div>
+
+  <div class="car" id="car-3">
+    <div class="f-glass"></div>
+    <div class="f-light-l"></div>
+    <div class="f-light-r"></div>
+    <div class="f-tyre-l"></div>
+    <div class="f-tyre-r"></div>
+    <div class="b-tyre-l"></div>
+    <div class="b-tyre-r"></div>
+    <div class="b-glass-"></div>
+  </div>
+
+  <div id="restart-div">
+    <button id="restart">
+      Click To Restart
+    </button>
+  </div>
+
+</div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+
+  <script type="text/javascript">
+    $(function(){
+      "use strict";
+      var anim_id;
+
+      var container    =$('#container'),
+          line         =$('#line'),
+          line_1       =$('#line-1'),
+          line_2       =$('#line-2 '),
+          line_3       =$('#line-3'),
+          car          =$('#car'),
+          car_1        =$('#car-1'),
+          car_2        =$('#car-2'),
+          car_3        =$('#car-3'),
+          restart_div  =$("#restart-div"),
+          restart_btn  =$("#restart"),
+          score        =$('#score');
+
+
+
+     var container_left = parseInt(container.css('left')),
+         container_width = parseInt(container.css('width')),
+        container_height = parseInt(container.css('height')),
+        car_width = parseInt(car.css('width')),
+        car_height = parseInt(car.css('height'));
+
+
+     var game_over = false,
+     score_counter = 1,
+     car_speed = 2,
+     line_speed = 5;
+
+     $(windows).on('keydown', function(e){
+       var key = e.which;
+
+       if(game_over ===false) {
+         if (key == 37){
+           if(parseInt(car.css('right')) < (container_width -
+              car_width - 20)){
+              car.animate({
+                left: "-=20px"
+              }, 30);
+            }
+
+          }else if (key == 39) {
+            if(parseInt(car.css('left')) < (container_width - 
+               car_width - 20 )) {
+               car.animate({
+                 left: "+=20px"
+               }, 30); 
+            }
+
+          }else if (key == 38) {
+            if(parseInt(car.css('bottom')) <  (container_width - 
+               car_width -20)) {
+               car.animate({
+                 bottom: "+=20px"
+               }, 30); 
+            }
+
+          }else if (key == 40){
+            if(parseInt(car.css('top')) < (container_width - 
+               car.width -20)) {
+               car.animate({
+                 bottom: "-=20px"
+               }, 40);  
+            }
+
+          } 
+        }else {
+          if (key == 13) {
+           window.location.reload(true);
+          }
+        }
+      });
+
+      var anim_id = requestAnimationFrame(repeat);
+      function repeat () {
+        if (game_over == false) {
+          score_counter ++;
+          if(score_counter % 20 == 0) {
+            score.text(parseInt(score.text()) +1)
+          }
+          if(score_counter % 300 == 0) {
+            car_speed++;
+            line_speed++;
+          }
+          if (collapsion(car, car_1) || collapsion(car, car_2) 
+            || collapsion(car, car_3)) {
+            stop_game ();
+            console.log(game_over);
+          }
+          car_down(car_1);
+          car_down(car_2);
+          car_down(car_3);
+
+          line_down(line_1);
+          line_down(line_2);
+          line_down(line_3);
+          anim_id = requestAnimationFrame(repeat);
+        }
+      }
+      function car_down (car) {
+        var current_top = parseInt(car.css('top'));
+        if(current_top > (container.height + 50)) {
+          current_top = -60;
+          var car_left = Math.floor(Math.random() * (
+            container_width - car_width));
+          car.css('left', car_left);  
+        }
+        car.css('top', current_top + car_speed);
+      }
+      function line_down(line) {
+        var l_current_top = parseInt(line.css('top'));
+        if(l_current_top > (container_height + 150)) {
+          l_current_top = -300;
+        }
+        line.css('top',l_current_top + line_speed);
+      } 
+
+      function stop_game() {
+        game_over = true;
+        cancelAnimationFrame(anim_id);
+        restart_div.slideDown();
+        restart_btn.focus();
+      }
+      restart_div.click(function (){
+        window.location.reload(true)
+      });
+
+      function collapsion(elem1 , elem2) {
+        var x1 = elem1.offset().left,
+        var y1 = elem1.offset().top,
+        var x2 = elem1.offset().left,
+        var y2 = elem1.offset().top,
+        h1 = elem1.outerheight(),
+        w1 = elem1.outerwidth(),
+        h2 = elem1.outerheight(),
+        w2 = elem1.outerwidth(),
+        b1 = y1 + h1,
+        r1 = x1 + w1,
+        b2 = y2 + h2,
+        r2 = x2 + w2;
+        if (b1 < y2 || y1 > b2 || r1 < x2 || x1 > r2) {
+          return false;
+        };
+        return true;
+      }
+      
+
+});
+
+  </script>
+  
+</body>
+</html>

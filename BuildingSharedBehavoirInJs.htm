@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <title></title>
+</head>
+<body>
+  <input type="text" class="msgInput">
+
+  <div>
+    Characters left <span class="msgCounter"></span>
+  </div>
+
+  <hr>
+
+  <input type="text" class="tags">
+
+  <div>
+    Characters left <span class="tagsCounter"></span>
+  </div>
+</body>
+
+<script>
+  const getCurrentContentLength = (content, max) => {
+    const maxLength = max;
+    if (content.length > maxLength) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+  const msgInput = document.querySelector('.msgInput');
+  const msgCounter = document.querySelector('.msgCounter');
+  const tagsInput = document.querySelector('.tags');
+  const tagsCounter = document.querySelector('.tagsCounter');
+
+  // Nope
+  // msgInput.addEventListener('keyup', (e) => {
+  //   console.log(e);
+  // });
+
+  const textFieldLengthValidator = (textField, counter, maxCount) => {
+    textField.onkeyup = function() {
+        counter.innerHTML = maxCount - this.value.length;
+
+        if(!getCurrentContentLength(this.value, (maxCount - 1))) {
+            textField.disabled = true;
+        }
+    }
+  }
+
+  textFieldLengthValidator(msgInput, msgCounter, 144);
+  textFieldLengthValidator(tagsInput, tagsCounter, 42);
+</script>
+</html>

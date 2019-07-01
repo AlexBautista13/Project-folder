@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <title></title>
+</head>
+
+<style>
+  .activeHeading {
+    color: firebrick;
+    font-size: 2em;
+    cursor: pointer;
+  }
+  .nonActiveHeading {
+    color: cornflowerblue;
+    font-size: 4em;
+    cursor: pointer;
+  }
+</style>
+<body>
+
+  <div id="mainHeading" class="activeHeading">
+    Hi there
+  </div>
+
+</body>
+
+<script>
+  const heading = document.getElementById('mainHeading');
+  heading.onclick = () => {
+    if (heading.classList.contains('activeHeading')) {
+      heading.classList.remove('activeHeading');
+      heading.classList.add('nonActiveHeading');
+    } else {
+      heading.classList.add('activeHeading');
+      heading.classList.remove('nonActiveHeading');
+    };
+  }
+
+
+ // heading.onclick = () => {
+ //   if (heading.classList.contains('activeHeading')) {
+ //     heading.className = 'nonActiveHeading';
+ //   } else {
+ //     heading.className = 'activeHeading';
+ //   };
+ // }
+</script>
+</html>

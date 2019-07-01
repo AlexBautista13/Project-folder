@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+ <meta charset='UTF-8'>
+ <title></title>
+
+ <style>
+   .hideElement {
+     visibility: hidden;
+   }
+
+   .showElement {
+     display: block;
+   }
+ </style>
+</head>
+<body>
+ <div class="widget showElement">
+   <div class="mainHeading">
+     <h1>Hi there</h1>
+   </div>
+
+   <div class="subHeading">
+     My Amazing subheading...
+   </div>
+
+ </div>
+ <button onclick="contentToggle()">Toggle Content</button>
+</body>
+<script>
+ // const mainHeading = document.querySelector('.mainHeading');
+ // const headings = document.querySelectorAll('div');
+ const widget = document.querySelector('.widget');
+
+ function contentToggle() {
+   if (widget.classList.contains('showElement')) {
+     widget.classList.remove('showElement');
+     widget.classList.add('hideElement');
+   } else {
+     widget.classList.remove('hideElement');
+     widget.classList.add('showElement');
+   }
+ }
+
+ // function contentToggle() {
+ //   console.log(headings);
+ //   headings.forEach((heading) => {
+ //     if (heading.classList.contains('showElement')) {
+ //       heading.classList.remove('showElement');
+ //       heading.classList.add('hideElement');
+ //     } else {
+ //       heading.classList.remove('hideElement');
+ //       heading.classList.add('showElement');
+ //     }
+ //   });
+ // }
+</script>
+</html>
